@@ -31,6 +31,7 @@ const PersonCard = ({ person, allPersons, setAllPersons }: Props) => {
   const [sumPopup, setSumPopup] = useState('');
   const [namePopup, setNamePopup] = useState('');
 
+  // handle input errors (wrong id, money/balance)
   const IsInputError = (money: number, balance: number) => {
     const personsId = allPersons.find((p) => p.id === selectedPersonsId);
     if (!selectedPersonsId) {
@@ -56,6 +57,7 @@ const PersonCard = ({ person, allPersons, setAllPersons }: Props) => {
     return false;
   };
 
+  // handle money send to other person, change balance for both people, add loans
   const handleMoneySend = (money: string) => {
     const moneyNumber = parseInt(money, 10);
     const lenderBalance = person.balance;
@@ -88,6 +90,7 @@ const PersonCard = ({ person, allPersons, setAllPersons }: Props) => {
     setAllPersons(copyPersons);
   };
 
+  // handle money recieve to other person, change balance for both people, add loans
   const handleMoneyRecieve = (money: string) => {
     const personsId = allPersons.find((p) => p.id === selectedPersonsId);
     if (!personsId){
@@ -128,6 +131,7 @@ const PersonCard = ({ person, allPersons, setAllPersons }: Props) => {
     setAllPersons(copyPersons);
   };
 
+  // handle loans paybacks. change persons balances, delete loan from persons loans array.
   const handleLoanPayback = (paybackPerson: Person, loan: Loan) => {
     const copyPersons = [...allPersons];
 
@@ -146,6 +150,7 @@ const PersonCard = ({ person, allPersons, setAllPersons }: Props) => {
     setAllPersons(copyPersons);
   };
 
+  // handle loans bg color. green if lender, red if reciever
   const handleBackgroundColor = (lender: string) => {
     if (lender === person.name) {
       return { backgroundColor: 'lightgreen' };

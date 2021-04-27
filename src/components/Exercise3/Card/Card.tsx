@@ -13,7 +13,7 @@ type Props = {
   onClick: () => void;
 };
 
-const Card: FC<Props> = ({ data, dataIndex, onClick }) => {
+const Card = ({ data, dataIndex, onClick }: Props) => {
   return (
     <div className="card">
       <h3 className="title">Example {dataIndex + 1}</h3>

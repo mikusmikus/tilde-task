@@ -22,11 +22,15 @@
 		margin-bottom: 2rem;
 		h3{
 			margin-bottom: 1rem;
+			@include tablet{
+				margin-bottom: 2rem;
+			}
 		}
 		.content {
 			display: flex;
 			// flex-wrap: wrap;
 			justify-content: space-between;
+			align-items: flex-start;
 			@include phone{
 				flex-wrap: wrap-reverse;
 				justify-content: center;
@@ -36,6 +40,9 @@
 				flex-wrap: wrap;
 				justify-content: flex-start;
 				width: 100%;
+				@include phone{
+					justify-content: center;
+				}
 			}
 			.coordinates{
 				margin: 0 1rem 1rem 0;
@@ -109,28 +116,48 @@
 		padding: 2rem;
 		background-color: $color-primary;
 		margin-bottom: 2rem;
+		@include phone{
+			padding: 1rem;
+		}
 		h1{
 			text-align: center;
+			@include phone{
+				font-size: 2rem;
+				line-height: 2.2rem;
+			}
 		}
 	}
 }
-svg{
-	position: relative;
-	transform: scale(1,-1);
-	transform-origin: center;
-	flex-shrink: 0;
-	margin-bottom: 20px;
-	background-color: $color-white;
-	&::before{
-		content: 'asd';
-		position: relative;
-		left: 0;
+.svg-wrapper{
+	.max-x{
+		position: absolute;
+		right: 0;
 		bottom: 0;
+	}
+	.max-y{
+		position: absolute;
+		left: -23px;
+		top: -23px;
+	}
+	position: relative;
+	&::before{
+		content: '0';
+		position: absolute;
+		left: -15px;
+		bottom: 5px;
 		width: 20px;
 		height: 20px;
 		z-index: 12;
 	}
-	polygon {
-		stroke: black;
-	  }
+	svg{
+		position: relative;
+		transform: scale(1,-1);
+		transform-origin: center;
+		flex-shrink: 0;
+		margin-bottom: 20px;
+		background-color: $color-white;
+		polygon {
+			stroke: black;
+		}
+	}
 }

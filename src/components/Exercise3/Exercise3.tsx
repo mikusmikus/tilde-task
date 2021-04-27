@@ -19,10 +19,22 @@ const Exercise3 = ({ data }: Props) => {
     { x: 15, y: 20 },
     { x: 20, y: 7 },
   ]);
+
   const [solution, setSolution] = useState('');
+
+  // polygons points for svg polygon
   const [polygonPoints, setPolygonPoints] = useState('');
 
+  // store svg width/height size
   const svgSize = useRef(200);
+
+  // store max value of coordinates from custom data object
+  const maxCoordinates = useRef(0);
+
+  // on component did mount and customData object, calls handleCustomPoints function
+  useEffect(() => {
+    handleCustomPoints();
+  }, [customData]);
 
   const calculateArea = (poly: Coordinates[]) => {
     const polyLength = poly.length;
@@ -44,6 +56,7 @@ const Exercise3 = ({ data }: Props) => {
     return polyArea;
   };
 
+  // check if polygone is clockwise or not
   const isClockwise = (poly: Coordinates[]) => {
     const polyArea = calculateArea(poly);
     if (polyArea < 0) {
@@ -53,6 +66,7 @@ const Exercise3 = ({ data }: Props) => {
     }
   };
 
+  // make polygone points from custom data coordinates
   const handleCustomPoints = () => {
     const maxX = Math.max(
       ...customData.map((e) => {
@@ -64,7 +78,8 @@ const Exercise3 = ({ data }: Props) => {
         return e.y;
       })
     );
-    const polygoneSizeMultiplier = Math.floor(svgSize.current / Math.max(maxX, maxY));
+    maxCoordinates.current = Math.max(maxX, maxY);
+    const polygoneSizeMultiplier = Math.floor(svgSize.current / maxCoordinates.current);
 
     let output = '';
     customData.forEach((item, i) => {
@@ -74,30 +89,27 @@ const Exercise3 = ({ data }: Props) => {
     setPolygonPoints(output);
   };
 
-  useEffect(() => {
-    handleCustomPoints();
-  }, [customData]);
-
+  // add new coordinates objext to custom data array
   const addNextPoint = () => {
     const newPoint = { x: 0, y: 0 };
     setCustomData([...customData, newPoint]);
   };
 
-
-
+  // handle custom coordinates inputs. allowed only positive number <100
   const handleInputCoordinates = (value: string, index: number, axis: 'x' | 'y') => {
     const copyData = [...customData];
     if (!value || value === 'NaN') {
       copyData[index][axis] = 0;
       setCustomData(copyData);
     }
-    if (parseInt(value, 10) < 0 || parseInt(value, 10) > 50) {
+    if (parseInt(value, 10) < 0 || parseInt(value, 10) > 100) {
       return;
     }
     copyData[index][axis] = parseInt(value, 10);
     setCustomData(copyData);
   };
 
+  // delete coordinates object from custom coordinates array
   const deleteCoordinates = (i: number) => {
     const copyData = [...customData];
     copyData.splice(i, 1);
@@ -129,7 +141,7 @@ const Exercise3 = ({ data }: Props) => {
           </div>
         )}
         <div className="custom-coordinates">
-          <h3>Custom coordinates (only positive numbers, max 50)</h3>
+          <h3>Custom coordinates (only positive numbers, max 100)</h3>
           <div className="content">
             <div className="coordinates-cards-wrapper">
               {customData.map((item, i) => {
@@ -165,12 +177,13 @@ const Exercise3 = ({ data }: Props) => {
                 );
               })}
             </div>
-            <svg
-              height={svgSize.current}
-              width={svgSize.current}
-            >
-              <polygon points={polygonPoints} fill="none" />
-            </svg>
+            <div className="svg-wrapper">
+              <span className="max-x">{maxCoordinates.current}</span>
+              <span className="max-y">{maxCoordinates.current}</span>
+              <svg height={svgSize.current} width={svgSize.current}>
+                <polygon points={polygonPoints} fill="none" />
+              </svg>
+            </div>
           </div>
           <div className="add-next">
             <Button onClick={addNextPoint}>add next point</Button>

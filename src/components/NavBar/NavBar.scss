@@ -11,10 +11,16 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	@include phone {
+		flex-wrap: wrap;
+		justify-content: center;
+		background: black;
+	}
 	.logo{
 		position: relative;
 		width: 100px;
 		min-width: 100px;
+		height: 100px;
 		img{
 			position: absolute;
 			left: 0;
@@ -27,6 +33,10 @@
 	.list{
 		display: flex;
 		justify-content: flex-end;
+		@include phone {
+			width: 100%;
+			justify-content: center;
+		}
 		.item{
 			flex: 0 0 auto;
 			margin-right: 2rem;

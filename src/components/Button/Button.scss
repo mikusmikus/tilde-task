@@ -10,6 +10,10 @@
     border-radius: 3px;
     cursor: pointer;
 	@include transition;
+    @include phone {
+        font-size: 1rem;
+        line-height: 1.3rem;
+    }
     &:hover{
         color: $color-primary;
 		

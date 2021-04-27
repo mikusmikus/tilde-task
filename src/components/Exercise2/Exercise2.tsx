@@ -9,6 +9,7 @@ type Props = {
 const Exercise2 = ({ data }: Props) => {
   const [persons, setPersons] = useState<Person[]>(data);
 
+  // creates new person for persons array
   const createPerson = () => {
     const newPerson: Person = {
       id: String(Math.floor(Math.random() * 100000)),

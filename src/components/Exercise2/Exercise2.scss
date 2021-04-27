@@ -1,0 +1,18 @@
+@import '../../styles/index.scss';
+
+.exercise2{
+	padding: 2.5rem 0;
+	.cards-wrapper{
+		display: flex;
+		flex-wrap: wrap;
+		padding: 2.5rem 0;
+		width: calc( 100%);
+		margin: 0 -0.6rem;
+		@include tablet {
+			flex-wrap: wrap;
+			width: 100%;
+			margin: 0;
+			padding: 2rem 0;
+		}
+	}
+}

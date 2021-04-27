@@ -1,0 +1,17 @@
+@import '../../styles/index.scss';
+
+.button {
+    font-size: 1.5rem;
+	line-height: 2rem;
+    padding: 0.5rem 1.5rem;
+    background-color: $color-secondary;
+	color: $color-white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+	@include transition;
+    &:hover{
+        color: $color-primary;
+		
+    }
+  }

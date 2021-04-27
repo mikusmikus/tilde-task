@@ -1,0 +1,37 @@
+@import '../../../styles/index.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: calc(100% / 3);
+  padding: 1.8rem;
+  background-color: $color-light;
+  margin: 0 0.6rem;
+  @include tablet {
+    width: 100%;
+    margin: 0;
+    margin-bottom: 0.6rem;
+  }
+  .title {
+    margin: 1rem 0;
+  }
+  .coordinates {
+    margin-bottom: 1rem;
+    display: flex;
+    flex-grow: 1;
+    align-items: flex-start;
+    .content {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      span {
+        white-space: nowrap;
+        margin-bottom: 0.3rem;
+      }
+    }
+  }
+  button {
+    flex-grow: 0;
+  }
+}

@@ -1,0 +1,79 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;700;900&display=swap');
+
+*{
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 18px;
+}
+
+h1,h2,h3,h4,p {
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: 3.2rem;
+  line-height: 3.8rem;
+  margin: 2rem 0;
+}
+
+p {
+  font-size: 1.2rem;
+  line-height: 1.8rem;
+  margin: 1rem 0;
+}
+
+
+ul{
+  margin: 20px 0;
+  padding: 0;
+  li{
+    list-style: none;
+    padding: none;
+    margin: none;
+    a{
+      color: $color-black;
+      text-decoration: none;
+      font-size: 1.4rem;
+      line-height: 2.2rem;
+      @include transition();
+      &:hover{
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+label {
+  margin-bottom: 0.2rem;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  padding: 0.2rem;
+  input, select{
+    padding: 0.6rem 1rem;
+    font-size: 1.2rem;
+    height: 100%;
+    width: 100%;
+    border: none;
+    outline: none;
+    border: 1px solid $color-light;
+  }
+}
+
+
+.tilde-container {
+	width: 100%;
+	max-width: calc(1152px + 64px + 64px);
+	padding: 0 64px;
+	margin: 0 auto;
+      @include tablet {
+        padding: 0 40px;
+      }
+      @include phone {
+        padding: 0 20px;
+      }
+	}

@@ -1,0 +1,78 @@
+@import '../../../styles/index.scss';
+
+.exercise2 {
+  .card {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    width: calc(100% / 3 - 1.2rem);
+    padding: 1.8rem;
+    background-color: $color-light;
+    margin: 0 0.6rem 0.6rem;
+    @include desktop-narrow {
+      width: calc(100% / 2 - 1.2rem);
+    }
+    @include tablet {
+      width: 100%;
+      margin: 0;
+      margin-bottom: 0.6rem;
+    }
+    label {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      padding: 0;
+      border: none ;
+      &.sum, &.name{
+        position: relative;
+        .popup{
+          position: absolute;
+          background-color: $color-primary;
+          right: 1px;
+          top: 0%;
+          font-size: 0.8rem;
+          background-color: lightcoral;
+          padding: 0 0.5rem;
+        }
+      }
+    }
+
+    button {
+      margin-bottom: 0.5rem;
+    }
+  }
+  .loans {
+    padding: 1rem 0 0 0;
+    ul {
+      display: flex;
+      flex-direction: column;
+      margin: 0;
+      li {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding: 0.6rem 1rem;
+        margin-bottom: 0.2rem;
+        background-color: $color-white;
+        .persons {
+          display: flex;
+          flex-direction: column;
+        }
+        .sum {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          position: relative;
+          button {
+            padding: 0.2rem 0.4rem;
+            font-size: 0.7rem;
+            line-height: 1rem;
+            &:hover {
+              background-color: darken($color-secondary, 10%);
+            }
+          }
+        }
+      }
+    }
+  }
+}

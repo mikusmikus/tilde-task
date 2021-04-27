@@ -1,0 +1,136 @@
+@import '../../styles/index.scss';
+
+
+.exercise3{
+	padding: 2.5rem 0;
+	.cards-wrapper{
+		display: flex;
+		padding: 2.5rem 0;
+		width: calc( 100% + 1.2rem);
+		margin: 0 -0.6rem;
+		@include tablet {
+			flex-wrap: wrap;
+			width: 100%;
+			margin: 0;
+			padding: 2rem 0;
+		}
+	}
+
+	.custom-coordinates{
+		background-color: $color-light;
+		padding: 2rem;
+		margin-bottom: 2rem;
+		h3{
+			margin-bottom: 1rem;
+		}
+		.content {
+			display: flex;
+			// flex-wrap: wrap;
+			justify-content: space-between;
+			@include phone{
+				flex-wrap: wrap-reverse;
+				justify-content: center;
+			}
+			.coordinates-cards-wrapper{
+				display: flex;
+				flex-wrap: wrap;
+				justify-content: flex-start;
+				width: 100%;
+			}
+			.coordinates{
+				margin: 0 1rem 1rem 0;
+				padding: 0.3rem;
+				background-color: $color-white;
+				
+				button{
+					// position: absolute;
+					background-color: $color-primary;
+					width: 100%;
+					padding: 0;
+					color: $color-black;
+					font-size: 0.8rem;
+					line-height: 1.5rem;
+					padding: 0.2rem 0.4rem;
+					margin-bottom: 0.2rem;
+					&:hover{
+						color :$color-white;
+						&:disabled{
+							color: lighten($color-secondary, 20%);
+							background-color: lighten($color-primary, 20%);
+							cursor: not-allowed;
+						}
+					}
+					&:disabled{
+						color: lighten($color-secondary, 20%);
+						background-color: lighten($color-primary, 20%);
+					}
+				}
+				// background-color: $color-primary;
+				label {
+					// margin-right: 0.5rem;
+					margin-bottom: 0.2rem;
+					font-size: 1.5rem;
+					line-height: 2rem;
+					padding: 0.2rem;
+					background-color: $color-white;
+					display: flex;
+					align-items: center;
+					border: 2px solid $color-primary;;
+					input{
+						padding: 0.2rem 0.3rem;
+						font-size: 1.5rem;
+						max-width: 80px;
+						height: 100%;
+						width: 100%;
+						border: none;
+						outline: none;
+						// background-color: $color-primary;
+					}
+				}
+			}
+		}
+		.add-next{
+			button{
+				background-color: $color-primary;
+				color: $color-black;
+				&:hover{
+					color :$color-white;
+				}
+			}
+		}
+		.solution{
+			padding: 20px 0;
+			display: flex;
+			justify-content: center;
+		}
+	}
+
+	.result {
+		padding: 2rem;
+		background-color: $color-primary;
+		margin-bottom: 2rem;
+		h1{
+			text-align: center;
+		}
+	}
+}
+svg{
+	position: relative;
+	transform: scale(1,-1);
+	transform-origin: center;
+	flex-shrink: 0;
+	margin-bottom: 20px;
+	background-color: $color-white;
+	&::before{
+		content: 'asd';
+		position: relative;
+		left: 0;
+		bottom: 0;
+		width: 20px;
+		height: 20px;
+		z-index: 12;
+	}
+	polygon {
+		stroke: black;
+	  }
+}

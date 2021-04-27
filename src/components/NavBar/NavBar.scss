@@ -1,0 +1,47 @@
+@import "../../styles/index.scss";
+
+.navbar{
+	// background-color: $color-light;
+	background: linear-gradient(90deg, rgba(255,255,255,0.85) 180px, rgba(138,138,138,1) 46%, rgb(58, 58, 58) 100%);
+	position: relative;
+	padding: 20px 40px;
+	width: 100%;
+	left: 0;
+	top: 0;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	.logo{
+		position: relative;
+		width: 100px;
+		min-width: 100px;
+		img{
+			position: absolute;
+			left: 0;
+			top: 50%;
+			width: 100%;
+			transform: translateY(-50%);
+			background-color: transparent;
+		}
+	}
+	.list{
+		display: flex;
+		justify-content: flex-end;
+		.item{
+			flex: 0 0 auto;
+			margin-right: 2rem;
+			&:last-child{
+				margin-right: 0;
+			}
+			a{
+				color: $color-white;
+				&:hover{
+					color: $color-primary;
+				}
+				&.activeRoute{
+					color: $color-primary;
+				}
+			}
+		}
+	}
+}
